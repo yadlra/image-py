@@ -1,9 +1,7 @@
+import numpy as np
 import cv2
+from matplotlib import pyplot as plt
 
-img = cv2.imread("coco.jpeg", 0)
-
-edge_img = cv2.Canny(img,100,200)
-
-cv2.imshow("Detected Edges", edge_img)
-
-cv2.waitKey(0)
+img = cv2.imread('coco.jpeg')
+gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
+ret, thresh = cv2.threshold(gray,0,255,cv2.THRESH_BINARY_INV+cv2.THRESH_OTSU)
